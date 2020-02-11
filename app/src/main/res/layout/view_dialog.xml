@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lLayout_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/junhong_background"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="2.5dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+            <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="发送给:"
+                    android:textColor="#999999"
+                    android:textSize="15sp"/>
+
+            <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="韩梅梅"
+                    android:textColor="#555555"
+                    android:textSize="16sp"/>
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#DDDDDD"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:paddingTop="13dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[产品]"
+                    android:textColor="#555555"
+                    android:textSize="16sp"/>
+
+
+            <TextView
+                    android:id="@+id/tv_funName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="君享年华定开债券定开债券债定开债券债券债券之债券2号"
+                    android:textColor="#222222"
+                    android:textSize="16sp"/>
+        </LinearLayout>
+
+        <EditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/junhong_shap"
+                android:hint="填写推荐语（以新消息形式发送）"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:textColor="#222222"
+                android:textColorHint="#ABABAB"
+                android:textSize="14sp"/>
+
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="15dp"
+            android:background="#DDDDDD"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+    >
+
+        <Button
+                android:id="@+id/btn_cancle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:textColor="#999999"
+                android:background="@null"
+                android:gravity="center"
+                android:text="取消"/>
+
+        <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#DDDDDD"/>
+
+        <Button
+                android:id="@+id/btn_send"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:textColor="#369FEA"
+                android:background="@null"
+                android:gravity="center"
+                android:text="发送"/>
+    </LinearLayout>
+</LinearLayout>
