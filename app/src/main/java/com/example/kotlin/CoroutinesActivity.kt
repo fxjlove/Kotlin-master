@@ -6,7 +6,7 @@ import android.util.Log
 import kotlinx.coroutines.*
 
 /**
- * 携程
+ * 协程
  */
 class CoroutinesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@ import kotlinx.coroutines.*
 
 
 /**
- * 携程
+ * 协程
  */
 class CoroutineActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
