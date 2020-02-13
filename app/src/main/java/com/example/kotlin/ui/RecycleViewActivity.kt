@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_recycleview.*
 import org.jetbrains.anko.toast
 
 /**
- * RecycleView 列表
+ * RecycleView 列表  RecycView的点击事件依照 java 的思想（不推荐）
  */
 class RecycleViewActivity : AppCompatActivity() {
 

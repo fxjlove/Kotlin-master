@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_recycleview.*
 import org.jetbrains.anko.toast
 
 /**
- * RecycView的点击事件Kotlin实现模式
+ * RecycView的点击事件Kotlin实现模式 自定义监听器
  */
 class RecycleViewListenerActivity : AppCompatActivity() {
 

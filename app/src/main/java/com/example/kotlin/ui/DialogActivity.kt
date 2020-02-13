@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.*
 import com.example.kotlin.R
+import com.example.kotlin.widget.CustomDialog
+import com.example.kotlin.widget.CustomDialog2
 import kotlinx.android.synthetic.main.activity_dialog.*
+import kotlinx.android.synthetic.main.view_dialog.*
 
 
 class DialogActivity : AppCompatActivity() {
@@ -21,7 +24,8 @@ class DialogActivity : AppCompatActivity() {
 
         //https://www.jianshu.com/p/6829ae8b044f
         btn_01.setOnClickListener{
-            showDialog()
+//            showDialog()
+            showForwardDialog()
         }
 /*
 
@@ -76,5 +80,23 @@ class DialogActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun showForwardDialog() {
+        val view = LayoutInflater.from(mContext).inflate(R.layout.view_dialog, null)
+        val btn_cancle = view.findViewById(R.id.btn_cancle) as Button
+        val btn_send = view.findViewById(R.id.btn_send) as Button
+//        val dialog = CustomDialog(mContext, view, R.style.AlertDialogStyle, 0.85)
+        val dialog = CustomDialog2(mContext, view, 0.85)
+        dialog.show()
+        //取消
+        btn_cancle.setOnClickListener {
+            //                TCAgent.onEvent(context, TDEventID.CHAT_CUSTOMER_RECOMMEND_CANCEL);去除埋点
+            dialog.dismiss()
+        }
+        //发送
+        btn_send.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 }

@@ -24,9 +24,16 @@ class RVListenerAdapter(mContext: Context, data:ArrayList<String>) : RecyclerVie
 //        this.listener = action
 //    }
 
+
+    //函数变量mListener， 他的输入为int，返回值为Unit(kotlin的null，不过是个具体的对象)
+    var mListener: ((pos: Int) -> Unit)? = null
+    fun setOnItemClickListener(listener: ((pos: Int) -> Unit)){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder {
-        val inflate = LayoutInflater.from(mContext).inflate(R.layout.recycleview_item,p0, false)
-        var holder: RecyclerView.ViewHolder = ViewHolder(inflate)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.recycleview_item,p0, false)
+        var holder: RecyclerView.ViewHolder = ViewHolder(view)
         return holder
     }
 
@@ -36,12 +43,8 @@ class RVListenerAdapter(mContext: Context, data:ArrayList<String>) : RecyclerVie
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as ViewHolder
-        viewHolder.tv.setText(data.get(position).toString())
+       /* viewHolder.tv.text = data.get(position).toString()
 
-//        // 点击事件
-//        viewHolder.itemView.setOnClickListener {
-//            mOnItemClickLitener!!.onItemClick(it,position)
-//        }
 
         //下面就是kotlin调用这个函数，传递数据的过程
         viewHolder.itemView.setOnClickListener{
@@ -51,17 +54,22 @@ class RVListenerAdapter(mContext: Context, data:ArrayList<String>) : RecyclerVie
             listener?.invoke(it,position)
             //let表达式表示如果为空就不会执行
             //listener?.invoke(data) 也可以
+        }*/
+
+
+
+
+        viewHolder?.run {
+            tv.text = data.get(position)
+            itemView.setOnClickListener {
+                listener?.invoke(it,position)
+            }
         }
     }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tv : TextView = itemView.findViewById(R.id.tv)
     }
 
-//    //自定义接口
-//    interface OnItemClickLitener {
-//        //RecyclerView列表点击
-//        fun onItemClick(view: View, position: Int)
-//    }
 
 
 
