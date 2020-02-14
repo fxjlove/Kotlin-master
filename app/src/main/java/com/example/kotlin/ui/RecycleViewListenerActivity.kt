@@ -16,7 +16,8 @@ import org.jetbrains.anko.toast
 class RecycleViewListenerActivity : AppCompatActivity() {
 
     private var data = ArrayList<String>()
-    private lateinit var adapter: RVListenerAdapter
+//    private lateinit var adapter: RVListenerAdapter
+    private lateinit var adapter: TestAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,34 +34,48 @@ class RecycleViewListenerActivity : AppCompatActivity() {
 
         recycler_view.layoutManager = LinearLayoutManager(this)
 
-        adapter = RVListenerAdapter(this, data)
+//        adapter = RVListenerAdapter(this, data)
+//
+//        recycler_view.adapter = adapter
+//
+//        adapter.setMyListener {_,position ->
+//           Toast.makeText(this@RecycleViewListenerActivity,data.get(position),Toast.LENGTH_SHORT).show()
+//        }
+
+
+
+        adapter = TestAdapter(this, data)
 
         recycler_view.adapter = adapter
 
-        adapter.setMyListener {_,position ->
-           Toast.makeText(this@RecycleViewListenerActivity,data.get(position),Toast.LENGTH_SHORT).show()
+        adapter.setOnItemClickListener { position, item ->
+//            Toast.makeText(this@RecycleViewListenerActivity,data.get(position),Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@RecycleViewListenerActivity,item,Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    fun initData() {
-        data.add("a")
-        data.add("b")
-        data.add("c")
-        data.add("d")
-        data.add("e")
-        data.add("f")
-        data.add("g")
-        data.add("h")
-        data.add("i")
-        data.add("j")
-        data.add("k")
-        data.add("l")
-        data.add("m")
-        data.add("n")
-        data.add("o")
-        data.add("p")
-        data.add("q")
+    private fun initData() {
+
+        data.apply {
+            add("a")
+            add("b")
+            add("c")
+            add("d")
+            add("e")
+            add("f")
+            add("g")
+            add("h")
+            add("i")
+            add("j")
+            add("k")
+            add("l")
+            add("m")
+            add("n")
+            add("o")
+            add("p")
+            add("q")
+        }
 
 
         adapter.notifyDataSetChanged()
