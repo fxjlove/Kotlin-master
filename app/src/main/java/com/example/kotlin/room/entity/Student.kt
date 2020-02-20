@@ -56,5 +56,12 @@ data class Student(
     @ColumnInfo(name = "s_name")
     var studentName: String?,
     @ColumnInfo(name = "s_type")
-    var studentType: String?
+    var studentType: String?,
+
+
+    //数据库版本为2的时候的代码，Student增加了age列
+    @ColumnInfo(name = "s_age")
+    var studentAge : Int?
+
+
 )

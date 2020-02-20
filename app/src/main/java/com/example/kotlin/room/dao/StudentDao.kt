@@ -15,16 +15,31 @@ interface StudentDao:BaseDao<Student> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(element:Student)
 
+    // 查询所有的信息
     @Query("select * from Student")
     fun getAllStudents():MutableList<Student>
 
+    //带参数的查询
+    @Query("SELECT * FROM Student WHERE s_name == :name")
+    fun getStudentName(name: String):MutableList<Student>
+
     @Query("select * from Student where studentID = :studentID")
-    fun getStudnet(studentID:Int):Student
+    fun getStudnetId(studentID:Int):Student
+
+    //多个参数查询
+//    @Query("SELECT * FROM Student WHERE age BETWEEN :minAge AND :maxAge")
+//    fun loadAllUsersBetweenAges(minAge: Int, maxAge: Int): Array<Student>
+//
+//    @Query("SELECT * FROM user WHERE firstName LIKE :search " + "OR lastName LIKE :search")
+//    fun findUserWithName(search: String): List<Student>
+
 
     @Query("select * from Student order by studentID desc ")
     fun getAllByDateDesc():MutableList<Student>
 
     @Query("delete from Student")
     fun deleteAll()
+
+
 
 }

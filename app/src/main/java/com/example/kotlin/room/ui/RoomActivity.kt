@@ -5,18 +5,22 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.example.kotlin.R
 import com.example.kotlin.room.dao.AppDataBase
+import com.example.kotlin.room.dao.BookDao
 import com.example.kotlin.room.dao.StudentDao
 import com.example.kotlin.room.dao.TeacherDao
+import com.example.kotlin.room.entity.Book
 import com.example.kotlin.room.entity.Student
 import com.example.kotlin.room.entity.Teacher
 import kotlinx.android.synthetic.main.activity_room.*
 
 /*
 
+Room是一个持久性数据库。 https://www.jianshu.com/p/cfde3535233d
+
+
+
 https://www.jianshu.com/p/3e358eb9ac43
 Room是一个对象关系映射(ORM)库。Room抽象了SQLite的使用，可以在充分利用SQLite的同时访问流畅的数据库。
-
-https://blog.csdn.net/u014620028/article/details/90719716
 
 https://blog.csdn.net/u014620028/article/details/90719716
 
@@ -27,6 +31,7 @@ https://www.jianshu.com/p/3e358eb9ac43
 class RoomActivity : AppCompatActivity() {
     private lateinit var sDao: StudentDao
     private lateinit var tDao: TeacherDao
+    private lateinit var bDao: BookDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,7 @@ class RoomActivity : AppCompatActivity() {
 
         sDao = AppDataBase.instance.getStudentDao()
         tDao = AppDataBase.instance.getTeacherDao()
+        bDao = AppDataBase.instance.getBookDao()
 
         insert.setOnClickListener {
             insert()
@@ -54,6 +60,12 @@ class RoomActivity : AppCompatActivity() {
 
         delete.setOnClickListener {
             delete()
+        }
+        query.setOnClickListener {
+            query()
+        }
+        add.setOnClickListener {
+            add()
         }
 
 
@@ -72,6 +84,19 @@ class RoomActivity : AppCompatActivity() {
 
         updateT.setOnClickListener {
             updateT()
+        }
+
+        queryT.setOnClickListener {
+            queryT()
+        }
+
+        deleteT.setOnClickListener {
+            deleteT()
+        }
+
+
+        insertB.setOnClickListener {
+            insertB()
         }
 
 
@@ -97,12 +122,12 @@ class RoomActivity : AppCompatActivity() {
 */
 
 
-        var s_1 = Student(1, "s1", "小学")
-        var s_2 = Student(2, "s2", "小学")
-        var s_3 = Student(3, "s3", "小学")
-        var s_6 = Student(6, "s6", "大学")
-        var s_5 = Student(5, "s5", "大学")
-        var s_4 = Student(4, "s4", "大学")
+        var s_1 = Student(1, "s1", "小学",1)
+        var s_2 = Student(2, "s2", "小学",1)
+        var s_3 = Student(3, "s3", "小学",1)
+        var s_6 = Student(6, "s6", "大学",1)
+        var s_5 = Student(5, "s5", "大学",1)
+        var s_4 = Student(4, "s4", "大学",1)
 
         var sList: MutableList<Student> = mutableListOf<Student>().apply {
             add(s_1)
@@ -124,12 +149,26 @@ class RoomActivity : AppCompatActivity() {
         }
 
 
+
+
+    }
+    //Query(查询)
+    private fun query() {
+        var sList_select_name: MutableList<Student> = sDao.getStudentName("s2")
+
+        for (i in sList_select_name.indices) {
+            Log.e("room", sList_select_name.get(i).toString())
+        }
+
+        var sList_select_id: Student = sDao.getStudnetId(5)
+
+        Log.e("room", sList_select_id.toString())
     }
 
     //Update(更新)
     private fun update() {
         //注意，这里我用的是insert，而不是 update
-        sDao.insert(Student(1, "s1", "大学～～～～～"))
+        sDao.insert(Student(1, "s1", "大学～～～～～",1))
 
         var sList_select_2: MutableList<Student> = sDao.getAllStudents()
 
@@ -148,12 +187,24 @@ class RoomActivity : AppCompatActivity() {
 
         @Delete对应的方法也是可以设置int返回值来表示删除了多少行。
     */
-        var s_6 = Student(6, "s6", "大学")
-        sDao.deleteSome(Student(100, "s100", "高中"), s_6)
+        var s_6 = Student(6, "s6", "大学",1)
+        sDao.deleteSome(Student(100, "s100", "高中",1), s_6)
 
         var sList_select_3: MutableList<Student> = sDao.getAllStudents()
         for (i in sList_select_3.indices) {
             Log.e("room", sList_select_3.get(i).toString())
+        }
+    }
+    //新增age字段
+    private fun add(){
+        //可以直接把list传进去，也可以一个一个单独添加
+        var s_7 = Student(7, "s7", "大学7",7)
+        sDao.insert(s_7)
+
+        var sList_select_1: MutableList<Student> = sDao.getAllStudents()
+
+        for (i in sList_select_1.indices) {
+            Log.e("room", sList_select_1.get(i).toString())
         }
     }
 
@@ -166,12 +217,14 @@ class RoomActivity : AppCompatActivity() {
         var t_4 = Teacher(4, "t4", 14)
         var t_5 = Teacher(5, "t5", 22)
 
-        var tList: MutableList<Teacher> = mutableListOf<Teacher>()
-        tList.add(t_1)
-        tList.add(t_2)
-        tList.add(t_3)
-        tList.add(t_4)
-        tList.add(t_5)
+        var tList: MutableList<Teacher> = mutableListOf<Teacher>().apply {
+            add(t_1)
+            add(t_2)
+            add(t_3)
+            add(t_4)
+            add(t_5)
+        }
+
 
         tDao.insertAll(tList)
 
@@ -227,4 +280,75 @@ class RoomActivity : AppCompatActivity() {
 
 
     }
+
+    //查询语句中传参
+    private fun queryT(){
+        //只展示大于某个年龄的user.
+        var tList_select: MutableList<Teacher> = tDao.getTeacher2(10)
+        for (i in tList_select.indices) {
+            Log.e("room", tList_select.get(i).toString())
+        }
+
+        Log.e("room","~~~~~~~~~~~~~~~~~~~~~")
+
+        var tList_select_between: MutableList<Teacher> = tDao.loadAllUsersBetweenAges(10,22)
+        for (i in tList_select_between.indices) {
+            Log.e("room", tList_select_between.get(i).toString())
+        }
+
+        Log.e("room","~~~~~~~~~~~~~~~~~~~~~")
+
+        var tList_select_name: MutableList<Teacher> = tDao.findUserWithName("t4","t5")
+        for (i in tList_select_name.indices) {
+            Log.e("room", tList_select_name.get(i).toString())
+        }
+
+        Log.e("room","~~~~~~~~~~~~~~~~~~~~~")
+
+/*
+        Room明白: 查询返回了列first_name和last_name, 这些值能够映射到NameTuple为的域中.
+
+        由此, Room能够产生适当的代码. 如果查询返回了太多列, 或者返回了NameTuple类中并不存在的列, Room将展示警告信息.
+        备注: POJO也可以使用@Embedded注解.*/
+        var tList_select_name2: MutableList<Teacher> = tDao.findUserWithName2()
+        for (i in tList_select_name2.indices) {
+            Log.e("room", tList_select_name2.get(i).toString())
+        }
+
+
+
+
+
+
+
+    }
+    //delete（删除）
+    private fun deleteT(){
+        tDao.deleteAll()
+
+    }
+
+    private fun insertB(){
+        var t_1 = Book(1, "t1", "时间1",11)
+        var t_2 = Book(2, "t2", "时间2",22)
+        var t_3 = Book(3, "t3", "时间3",33)
+        var t_4 = Book(4, "t4", "时间4",44)
+
+        var tList: MutableList<Book> = mutableListOf<Book>().apply {
+            add(t_1)
+            add(t_2)
+            add(t_3)
+            add(t_4)
+        }
+
+
+        bDao.insertAll(tList)
+
+        var tList_select_1: MutableList<Book> = bDao.getAllTeachers()
+
+        for (i in tList_select_1.indices) {
+            Log.e("room", tList_select_1.get(i).toString())
+        }
+    }
+
 }
