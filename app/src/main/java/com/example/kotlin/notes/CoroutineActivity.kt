@@ -1,17 +1,11 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_other.*
 import kotlinx.coroutines.*
 import java.lang.Runnable
-import android.R.string.no
-import android.support.v4.app.SupportActivity
-import android.support.v4.app.SupportActivity.ExtraData
-import android.support.v4.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import com.example.kotlin.R
 
 
 /**

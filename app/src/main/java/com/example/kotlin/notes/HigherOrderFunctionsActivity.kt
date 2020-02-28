@@ -1,7 +1,8 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.kotlin.R
 
 /**
  * 高阶函数  https://www.jianshu.com/p/7a771317ab74
@@ -46,11 +47,19 @@ class HigherOrderFunctionsActivity : AppCompatActivity() {
 
         //使用:
         var ride = getNum(1) //传递一个1进去代表使用乘法
-        var result2 = ride(Num(3)) //得到一个以Num作为参数的高阶函数
+        var result2 = ride(
+            Num(
+                3
+            )
+        ) //得到一个以Num作为参数的高阶函数
         //==> result2 = 9
 
         var sum2 = getNum(2)
-        var result = sum2(Num(3))
+        var result = sum2(
+            Num(
+                3
+            )
+        )
         //==> result = 6
 
 

@@ -1,7 +1,8 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.kotlin.R
 
 /**
  * kotlin设计模式

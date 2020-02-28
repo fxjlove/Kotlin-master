@@ -1,10 +1,11 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.example.kotlin.R
 import com.example.kotlin.applybean.Resp
 import com.example.kotlin.applybean.User
 import com.example.kotlin.applybean.User2

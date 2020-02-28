@@ -1,7 +1,8 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.kotlin.R
 import com.example.kotlin.inherit.lambda.Book
 import com.example.kotlin.inherit.lambda.Person
 import kotlinx.android.synthetic.main.activity_other.*

@@ -1,10 +1,11 @@
-package com.example.kotlin;
+package com.example.kotlin.notes;
 
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.kotlin.R;
 import com.example.kotlin.common.Conant;
 import com.example.kotlin.common.TopLevelClass;
 import com.example.kotlin.function.StringFunctions1;

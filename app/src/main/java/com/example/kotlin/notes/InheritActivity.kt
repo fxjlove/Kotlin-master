@@ -1,7 +1,8 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.kotlin.R
 //import 包名.函数名来导入我们将要使用的函数
 import com.example.kotlin.inherit.*
 import com.example.kotlin.inherit.class1.User2

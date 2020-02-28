@@ -1,10 +1,11 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 //作用:添加了这一行后我们就不需要再findViewById就可以了，
 import android.util.Log
+import com.example.kotlin.R
 
 
 /**

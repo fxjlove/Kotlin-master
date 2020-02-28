@@ -1,8 +1,9 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.example.kotlin.R
 import com.example.kotlin.enump.Color //导入其他包中定义的Color类
 import com.example.kotlin.enump.Color.* //显示地导入枚举常量就可以使用他们的名称
 

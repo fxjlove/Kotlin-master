@@ -1,8 +1,9 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import com.example.kotlin.R
 
 //导入扩展函数
 import com.example.kotlin.ext.*

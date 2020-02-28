@@ -1,8 +1,9 @@
-package com.example.kotlin
+package com.example.kotlin.notes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.example.kotlin.R
 import kotlinx.coroutines.*
 
 /**
