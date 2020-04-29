@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 /*
 
+   https://blog.csdn.net/sinat_33150417/article/details/90705351
 
    Kotlin设计模式实现之装饰者模式（Decorator）
 
